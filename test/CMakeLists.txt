@@ -20,6 +20,11 @@ function(add_performance_test TEST_NAME COMM RMW_IMPLEMENTATION)
     "${AMENT_TEST_RESULTS_DIR}/${PROJECT_NAME}/performance_test_results_${TEST_NAME}.csv"
     ABSOLUTE
   )
+  get_filename_component(
+    FASTRTPS_DEFAULT_PROFILES_FILE
+    "${CMAKE_CURRENT_SOURCE_DIR}/DEFAULT_FASTRTPS_PROFILES.xml"
+    ABSOLUTE
+  )
   configure_file(
     test_performance.py.in
     ${CMAKE_CURRENT_BINARY_DIR}/test_performance_${TEST_NAME}.py.configure
@@ -36,6 +41,7 @@ function(add_performance_test TEST_NAME COMM RMW_IMPLEMENTATION)
     "PERFORMANCE_REPORT_PNG=${PERFORMANCE_REPORT_PNG}"
     "PERFORMANCE_REPORT_CSV=${PERFORMANCE_REPORT_CSV}"
     "RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION}"
+    "FASTRTPS_DEFAULT_PROFILES_FILE=${FASTRTPS_DEFAULT_PROFILES_FILE}"
   )
 endfunction()
 
