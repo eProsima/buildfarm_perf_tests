@@ -37,6 +37,10 @@ def _raw_to_csv(csv_data, csv_path):
     appears on the plot.
     """
     dataframe = pd.read_csv(csv_data, skiprows=21, sep='[ \t]*,[ \t]*', engine='python')
+    csv_raw_path = csv_path.split('.')
+    csv_raw_path[-2] = csv_raw_path[-2] + '_all'
+    csv_raw_path = '.'.join(csv_raw_path)
+    dataframe.to_csv(csv_raw_path, index=False)
     dataframe_agg = dataframe.agg(['max', 'mean', 'sum'])
 
     values = [
