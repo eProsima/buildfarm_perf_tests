@@ -63,7 +63,7 @@ def _raw_to_jenkins(dataframe, csv_path):
         dataframe['data_received'].describe(percentiles=[0.95]).iloc[5] * BYTE_TO_MBYTE,
     ]
 
-    write_jenkins_plot_csv(csv_path, '@TEST_NAME@_@PERF_TEST_TOPIC@', values)
+    write_jenkins_plot_csv(csv_path, '@TEST_NAME_SYNC_TOPIC@', values)
 
     json_path = os.path.splitext(csv_path)[0] + '.benchmark.json'
     json_values = {
